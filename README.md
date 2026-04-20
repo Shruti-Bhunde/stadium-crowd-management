@@ -36,3 +36,10 @@ StadiaFlow AI addresses these challenges through an integrated management dashbo
 - [ ] **AR Wayfinding**: Augmented Reality navigation for fans to find their seats easily.
 - [ ] **AI Predictive Modeling**: Predicting bottlenecks 15 minutes before they happen using ML.
 
+cloud run deploy stadium-crowd-management-2 \
+    --source . \
+    --port 8080 \
+    --allow-unauthenticated \
+    --project=stadium-crowd-management-2 \
+    --region=us-central1 \
+    --labels=dev-tutorial=an-adk
