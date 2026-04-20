@@ -1,0 +1,428 @@
+:root {
+    --bg-primary: #f0f2f5;
+    --bg-sidebar: #ffffff;
+    --bg-card: #ffffff;
+    --primary-color: #2e7d32; /* Field Green */
+    --secondary-color: #1565c0; /* Stadium Blue */
+    --accent-color: #f9a825; /* Gold/Amber */
+    --error-color: #d32f2f;
+    --text-main: #1c1e21;
+    --text-muted: #65676b;
+    --border-color: #e4e6eb;
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    overflow: hidden;
+}
+
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background-color: var(--bg-sidebar);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+}
+
+.logo i {
+    font-size: 1.5rem;
+}
+
+.nav-menu {
+    flex-grow: 1;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: var(--text-muted);
+    border-radius: 8px;
+    margin-bottom: 4px;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.nav-item:hover {
+    background-color: #f5f5f5;
+    color: var(--primary-color);
+}
+
+.nav-item.active {
+    background-color: rgba(46, 125, 50, 0.1);
+    color: var(--primary-color);
+}
+
+.sim-controls {
+    border-top: 1px solid var(--border-color);
+    padding-top: 24px;
+    margin-bottom: 24px;
+}
+
+.sim-controls h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+}
+
+.btn-sim {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    background: transparent;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    text-align: left;
+}
+
+.btn-sim:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-sim.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.status-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.status-dot.online {
+    background-color: #4caf50;
+    box-shadow: 0 0 4px #4caf50;
+}
+
+/* Main Content */
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.top-bar {
+    height: 70px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #f0f2f5;
+    padding: 8px 16px;
+    border-radius: 20px;
+    width: 300px;
+    gap: 10px;
+}
+
+.search-bar input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.notifications {
+    position: relative;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.notif-dropdown {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 320px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    border: 1px solid var(--border-color);
+    display: none;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.notif-dropdown.active {
+    display: flex;
+}
+
+.notif-header {
+    padding: 16px;
+    font-weight: 700;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.notif-body {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.notif-item {
+    padding: 16px;
+    display: flex;
+    gap: 12px;
+    border-bottom: 1px solid var(--bg-primary);
+    transition: var(--transition);
+}
+
+.notif-item:hover {
+    background: #f8f9fa;
+}
+
+.notif-item i {
+    font-size: 1rem;
+    margin-top: 3px;
+}
+
+.notif-item p {
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+}
+
+.notif-item span {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.text-green { color: var(--primary-color); }
+.text-amber { color: var(--accent-color); }
+.text-blue { color: var(--secondary-color); }
+
+.admin-info {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.admin-info strong {
+    font-size: 0.9rem;
+}
+
+.admin-info span {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+    padding: 32px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto 1fr;
+    gap: 24px;
+    height: calc(100vh - 70px);
+}
+
+.kpi-card {
+    background: var(--bg-card);
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: var(--shadow-soft);
+}
+
+.kpi-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+.kpi-icon.blue { background: rgba(21, 101, 192, 0.1); color: var(--secondary-color); }
+.kpi-icon.green { background: rgba(46, 125, 50, 0.1); color: var(--primary-color); }
+.kpi-icon.gold { background: rgba(249, 168, 37, 0.1); color: var(--accent-color); }
+.kpi-icon.red { background: rgba(211, 47, 47, 0.1); color: var(--error-color); }
+
+.kpi-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.kpi-data h2 {
+    font-size: 1.5rem;
+    margin: 4px 0;
+}
+
+.kpi-trend {
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.kpi-trend.up { color: var(--primary-color); }
+.kpi-trend.down { color: var(--error-color); }
+.kpi-trend.steady { color: var(--secondary-color); }
+
+/* Map Container */
+.map-container {
+    grid-column: span 3;
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    background: var(--bg-card);
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+    padding: 24px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.map-legend {
+    display: flex;
+    gap: 16px;
+    font-size: 0.8rem;
+}
+
+.map-legend span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot.low { background: #e8f5e9; border: 1px solid #c8e6c9; }
+.dot.medium { background: #fffde7; border: 1px solid #fff9c4; }
+.dot.high { background: #ffebee; border: 1px solid #ffcdd2; }
+
+#stadium-svg-wrapper {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Alerts Panel */
+.alerts-panel {
+    grid-column: span 1;
+}
+
+.btn-text {
+    background: none;
+    border: none;
+    color: var(--secondary-color);
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.alerts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.alert-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+}
+
+.alert-item.info {
+    background: rgba(21, 101, 192, 0.05);
+    border-left: 4px solid var(--secondary-color);
+}
+
+.alert-item.warning {
+    background: rgba(211, 47, 47, 0.05);
+    border-left: 4px solid var(--error-color);
+}
+
+.alert-content strong {
+    display: block;
+    margin-bottom: 2px;
+}
+
+.alert-content span {
+    color: var(--text-muted);
+}
+
+.alert-content small {
+    display: block;
+    margin-top: 4px;
+    color: #999;
+}
+
+/* Stadium Specific Heatmap Styles */
+.stadium-sector {
+    transition: fill 0.5s ease;
+    cursor: pointer;
+}
+
+.stadium-sector:hover {
+    opacity: 0.8;
+}

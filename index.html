@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StadiaFlow AI | Cricket Stadium Management</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-baseball-bat-ball"></i>
+                <span>StadiaFlow <strong>AI</strong></span>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" id="tab-dashboard"><i class="fas fa-chart-line"></i> Dashboard</a>
+                <a href="#" class="nav-item" id="tab-heatmaps"><i class="fas fa-map-location-dot"></i> Heatmaps</a>
+                <a href="#" class="nav-item" id="tab-flow"><i class="fas fa-users-viewfinder"></i> Crowd Flow</a>
+                <a href="#" class="nav-item" id="tab-concessions"><i class="fas fa-utensils"></i> Concessions</a>
+                <a href="#" class="nav-item" id="tab-security"><i class="fas fa-shield-halved"></i> Security</a>
+            </nav>
+            <div class="sim-controls">
+                <h3>Simulation Modes</h3>
+                <button class="btn btn-sim active" id="mode-normal">Normal Match</button>
+                <button class="btn btn-sim" id="mode-break">Innings Break</button>
+                <button class="btn btn-sim" id="mode-egress">Post-Match Exit</button>
+            </div>
+            <div class="status-footer">
+                <div class="status-dot online"></div> System Live: HD Cameras Active
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search gate, stand or sector...">
+                </div>
+                <div class="user-profile">
+                    <div class="notifications" id="notif-trigger">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                        <div class="notif-dropdown" id="notif-dropdown">
+                            <div class="notif-header">Notifications</div>
+                            <div class="notif-body">
+                                <div class="notif-item">
+                                    <i class="fas fa-circle-check text-green"></i>
+                                    <div>
+                                        <p>Check-in complete for Gate 2</p>
+                                        <span>Just now</span>
+                                    </div>
+                                </div>
+                                <div class="notif-item">
+                                    <i class="fas fa-triangle-exclamation text-amber"></i>
+                                    <div>
+                                        <p>High traffic at North Stand</p>
+                                        <span>5 mins ago</span>
+                                    </div>
+                                </div>
+                                <div class="notif-item">
+                                    <i class="fas fa-info-circle text-blue"></i>
+                                    <div>
+                                        <p>New shift starting for Security</p>
+                                        <span>12 mins ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="admin-info">
+                        <strong>Commander Admin</strong>
+                        <span>Stadium Operations</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-grid">
+                <!-- KPI Cards -->
+                <div class="kpi-card">
+                    <div class="kpi-icon blue"><i class="fas fa-users"></i></div>
+                    <div class="kpi-data">
+                        <span class="kpi-label">Current Occupancy</span>
+                        <h2 id="total-occupancy">42,500</h2>
+                        <span class="kpi-trend up">+1.2% (Full Capacity)</span>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon green"><i class="fas fa-clock"></i></div>
+                    <div class="kpi-data">
+                        <span class="kpi-label">Avg. Queue Time</span>
+                        <h2 id="avg-queue-time">4m 20s</h2>
+                        <span class="kpi-trend down">-15s (Optimal)</span>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon gold"><i class="fas fa-door-open"></i></div>
+                    <div class="kpi-data">
+                        <span class="kpi-label">Gate Traffic</span>
+                        <h2 id="gate-flow">120 p/min</h2>
+                        <span class="kpi-trend steady">Steady Inflow</span>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon red"><i class="fas fa-triangle-exclamation"></i></div>
+                    <div class="kpi-data">
+                        <span class="kpi-label">Alert Zones</span>
+                        <h2 id="alert-count">0</h2>
+                        <span class="kpi-trend">All Zones Clear</span>
+                    </div>
+                </div>
+
+                <!-- Interactive Map Section -->
+                <div class="map-container card">
+                    <div class="card-header">
+                        <h3>Live Stadium Heatmap</h3>
+                        <div class="map-legend">
+                            <span><i class="dot low"></i> Low</span>
+                            <span><i class="dot medium"></i> Mid</span>
+                            <span><i class="dot high"></i> High</span>
+                        </div>
+                    </div>
+                    <div id="stadium-svg-wrapper">
+                        <!-- SVG injected here by JS -->
+                    </div>
+                </div>
+
+                <!-- Alerts & Feed -->
+                <div class="alerts-panel card">
+                    <div class="card-header">
+                        <h3>Real-Time Alerts</h3>
+                        <button class="btn-text">View All</button>
+                    </div>
+                    <div class="alerts-list" id="alerts-feed">
+                        <div class="alert-item info">
+                            <i class="fas fa-info-circle"></i>
+                            <div class="alert-content">
+                                <strong>Sector A3 Entry</strong>
+                                <span>Smooth flow reported at Gate 4.</span>
+                                <small>2 mins ago</small>
+                            </div>
+                        </div>
+                        <div class="alert-item warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <div class="alert-content">
+                                <strong>Food Plaza North</strong>
+                                <span>Density increasing. Redirecting flow.</span>
+                                <small>5 mins ago</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
