@@ -30,21 +30,9 @@ StadiaFlow AI addresses these challenges through an integrated management dashbo
 - **Styling**: Modern CSS3 (Sporty aesthetic, Glassmorphism elements)
 - **Mapping**: Dynamic SVG path generation for sub-pixel precision and layering.
 
-## 📦 Getting Started
-To run the prototype locally:
-1. Clone this repository or download the source files.
-2. Open `index.html` in any modern web browser.
-3. Use the **Sidebar Menu** to switch between views.
-4. Use the **Simulation Controls** to see how the crowd behavior changes dynamically.
-
-## 📸 Screenshots
-*Include screenshots of the Dashboard, Heatmap, and Security views here.*
-
 ## 🛣️ Roadmap
 - [ ] **Mobile Fan App**: Companion app for fans to check live wait times and order food.
 - [ ] **IoT Sensor Integration**: Connecting real-time turnstile data for 100% accuracy.
 - [ ] **AR Wayfinding**: Augmented Reality navigation for fans to find their seats easily.
 - [ ] **AI Predictive Modeling**: Predicting bottlenecks 15 minutes before they happen using ML.
 
----
-Built with ❤️ for better fan experiences.
